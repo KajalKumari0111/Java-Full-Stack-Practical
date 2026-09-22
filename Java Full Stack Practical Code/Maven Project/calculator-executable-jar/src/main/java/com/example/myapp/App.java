@@ -14,7 +14,7 @@ public class App implements ActionListener
     JFrame frame;
     JPanel panel;
     JTextField t1, t2, tresult;
-    JButton addBtn, subBtn, mulBtn, divBtn, exitBtn;
+    JButton addBtn, subBtn, mulBtn, divBtn, percentBtn, exitBtn;
 
     public App() 
     {
@@ -40,6 +40,7 @@ public class App implements ActionListener
         subBtn = new JButton("SUBTRACT");
         mulBtn = new JButton("MULTIPLY");
         divBtn = new JButton("DIV");
+        percentBtn = new JButton("PERCENT");
         exitBtn = new JButton("EXIT");
 
         panel.setLayout(null);   // <--- IMPORTANT
@@ -55,13 +56,15 @@ public class App implements ActionListener
         subBtn.setBounds(160, 200, 120, 25);
         mulBtn.setBounds(290, 200, 120, 25);
         divBtn.setBounds(50, 250, 100, 25);
-        exitBtn.setBounds(160, 250, 100, 25);
+        percentBtn.setBounds(160, 250, 120, 25);
+        exitBtn.setBounds(290, 250, 100, 25);
 
         // Add listeners
         addBtn.addActionListener(this);
         subBtn.addActionListener(this);
         mulBtn.addActionListener(this);
         divBtn.addActionListener(this);
+        percentBtn.addActionListener(this);
         exitBtn.addActionListener(this);
 
         // Add components to panel
@@ -70,6 +73,7 @@ public class App implements ActionListener
         panel.add(l3); panel.add(tresult);
         panel.add(addBtn); panel.add(subBtn);
         panel.add(mulBtn); panel.add(divBtn);
+        panel.add(percentBtn);
         panel.add(exitBtn);
 
         frame.add(panel);
@@ -104,6 +108,11 @@ public class App implements ActionListener
                 result = num1 * num2;
                 tresult.setText(String.valueOf(result));
             } 
+            if (e.getSource() == percentBtn)
+            {
+            result = (num1 * num2) / 100;
+            tresult.setText(String.valueOf(result));
+            }
             if (e.getSource() == divBtn) 
             {
                 if (num2 != 0) 
